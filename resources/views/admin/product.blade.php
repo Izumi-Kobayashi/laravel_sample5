@@ -26,7 +26,7 @@
             <th>サイズ</th><th>価格（税込）</th>
         </tr>
         @foreach ($rows as $row)
-            <form name="products" action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
+            <form action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
                 {{ csrf_field() }}
                 <tr>
                     <td>{{ $row->size }}</td>
@@ -36,10 +36,12 @@
                     <input type="hidden" value="{{ $row->product_id }}" name="products[{{ $row->size_id }}][product_id]">
                     <input type="hidden" value=0 name="products[{{ $row->size_id }}][flag]">
                 </tr>
+            </form>
         @endforeach
     </table>
 
-    <form action="{{ route('admin.menu_store_product_all', ['id'=>$menu->id]) }}">
+    <form action="{{ route('admin.menu_store_product_all', ['id'=>$menu->id]) }}" method="post">
+        {{ csrf_field() }}
         <input type="submit" value="すべて変更する">
     </form>
 @endsection

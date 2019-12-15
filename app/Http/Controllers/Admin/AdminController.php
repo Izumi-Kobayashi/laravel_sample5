@@ -109,7 +109,7 @@ class AdminController extends Controller
 
     public function storeProductAll($id, Request $request)
     {
-logger('all:'.$request);
+        logger($request);
         foreach ($request['products'] as $product) {
 logger($product['product_id']);
 logger($product['price']);

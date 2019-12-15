@@ -12,7 +12,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'menu_id', 'size_id'
+        'menu_id', 'size_id', 'price',
     ];
     public function menu()
     {
