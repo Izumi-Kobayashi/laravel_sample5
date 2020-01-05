@@ -18,21 +18,21 @@ class ProductUpdateService
     {
         $menu = $this->request['menu'];
 
-        foreach ($this->request['products'] as $product) {
-            if (empty($product['price'])) {
+        foreach ($this->request['sizes'] as $size) {
+            if (empty($size['price'])) {
                 Product::where([
                     'menu_id' => $menu->id,
-                    'size_id' => $product['size_id']
+                    'size_id' => $size['size_id']
                 ])->delete();
-            } elseif (empty($product['product_id'])) {
+            } elseif (empty($size['product_id'])) {
                 Product::create([
                     'menu_id' => $menu->id,
-                    'size_id' => $product['size_id'],
-                    'price' => $product['price'],
+                    'size_id' => $size['size_id'],
+                    'price' => $size['price'],
                 ]);
             } else {
-                Product::where('id', $product['product_id'])
-                       ->update(['price' => $product['price']]);
+                Product::where('id', $size['product_id'])
+                       ->update(['price' => $size['price']]);
             }
         }
     }
