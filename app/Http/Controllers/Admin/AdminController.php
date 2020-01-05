@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Forms\PersonForm;
 use App\Menu;
+use App\Services\ProductUpdateService;
 use App\Size;
 use App\Product;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Kris\LaravelFormBuilder\FormBuilderTrait;
 use App\Forms\MenuForm;
 use App\Forms\ProductForm;
 use App\Http\Controllers\Controller;   // 追加
+
 
 class AdminController extends Controller
 {
@@ -76,30 +78,10 @@ class AdminController extends Controller
         return view('admin.product', compact('menu'));
     }
 
-    public function storeProduct($id, Request $request)
+    public function storeProduct(ProductUpdateService $service, Menu $menu)
     {
-        foreach ($request['sizes'] as ['size_id' => $size_id, 'price' => $price]) {
-            if (empty($price)) {
-                Product::where([
-                    'menu_id' => $id,
-                    'size_id' => $size_id
-                ])->delete();
-            } else {
-                $product = Product::where([
-                    'menu_id' => $id,
-                    'size_id' => $size_id
-                ])->first();
-                if (empty($product)) {
-                    Product::create([
-                        'menu_id' => $id,
-                        'size_id' => $size_id,
-                        'price' => $price,
-                    ]);
-                } else {
-                    $product->update(['price' => $price]);
-                }
-            }
-        }
-        return redirect(route('admin.menu_product', ['id' => $id]));
+        $service->update();
+
+        return redirect(route('admin.menu_product', ['menu' => $menu->id]));
     }
 }

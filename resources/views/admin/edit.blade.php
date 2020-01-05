@@ -27,7 +27,7 @@
         <input type="submit" value="メニュー一覧">
     </form>
 
-    <form action="{{ route('admin.menu_product',  ['id' => $menu->id]) }}">
+    <form action="{{ route('admin.menu_product',  ['menu' => $menu->id]) }}">
         <input type="submit" value="サイズと価格の設定">
     </form>
 

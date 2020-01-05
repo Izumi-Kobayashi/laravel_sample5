@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Http\View\Composers\ProductEditComposer;
+use App\Http\ViewComposers\ProductEditComposer;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,6 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        \View::composer('admin.products', ProductEditComposer::class);
+        \View::composer('admin.product', ProductEditComposer::class);
     }
 }

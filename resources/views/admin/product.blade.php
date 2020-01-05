@@ -22,13 +22,13 @@
         <p>メニュー： {{ $menu->name }}</p>
     </div>
 
-    <form id="change-price-form" name="products" action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
+    <form id="change-price-form" name="products" action="{{ route('admin.menu_store_product', ['menu'=>$menu->id]) }}" method="post">
         @csrf
         <input type="hidden" name="sizes[0][size_id]">
         <input type="hidden" name="sizes[0][price]">
     </form>
 
-    <form action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
+    <form action="{{ route('admin.menu_store_product', ['menu' => $menu->id]) }}" method="post">
         {{ csrf_field() }}
 
         <table border="1">

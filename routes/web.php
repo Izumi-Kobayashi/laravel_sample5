@@ -38,8 +38,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('admin/menus/create', 'Admin\AdminController@create')->name('admin.menu_create');
     Route::post('admin/menus', 'Admin\AdminController@store')->name('admin.menu_store');
     Route::get('admin/menus/{id}/edit', 'Admin\AdminController@edit')->name('admin.menu_edit');
-    Route::get('admin/menus/{id}/product', 'Admin\AdminController@product')->name('admin.menu_product');
-    Route::post('admin/menus/{id}/product/store', 'Admin\AdminController@storeProduct')->name('admin.menu_store_product');
+    Route::get('admin/menus/{menu}/product', 'Admin\AdminController@product')->name('admin.menu_product');
+    Route::post('admin/menus/{menu}/product/store', 'Admin\AdminController@storeProduct')->name('admin.menu_store_product');
     Route::post('admin/menus/{id}/product/all', 'Admin\AdminController@storeProductAll')->name('admin.menu_store_product_all');
     Route::put('admin/menus/{id}', 'Admin\AdminController@update')->name('admin.menu_update');
     Route::get('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
