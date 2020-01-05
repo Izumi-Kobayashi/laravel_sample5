@@ -59,5 +59,8 @@ Route::group(['middleware' => 'auth:user'], function () {
     Route::get('menus/history', 'MenuController@history')->name('menu_history');
     Route::get('menus/{id}/post', 'MenuController@post')->where('id', '[0-9]+')->name('menu_post');
     Route::post('menus/store/{menu}', 'MenuController@store')->where('menu', '[0-9]+')->name('menu_store');
+    Route::get('favorite', 'FavoriteController@show')->where('id', '[0-9]+')->name('favorite_show');
+    Route::get('favorite-menus', 'FavoriteController@favoriteMenuIds');
+    Route::post('favorite-menus/{menu}', 'FavoriteController@addRemove')->where('id', '[0-9]+');
     Route::get('logout', 'LoginController@logout')->name('logout');
 });

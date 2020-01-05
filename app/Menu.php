@@ -56,4 +56,9 @@ class Menu extends Model
         $this->products->pluck('size_id')->all();
     }
 
+    public function favorites()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
 }

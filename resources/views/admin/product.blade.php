@@ -4,10 +4,11 @@
         $(function() {
             $('.change-price').click(function () {
                 const sizeId = $(this).data('size_id');
-                const productId = $(this).data('product_id');
-                $(`input[name="products[${ sizeId }][size_id]"]`).val(sizeId);
-                $(`input[name="products[${ sizeId }][product_id]"]`).val(productId);
-                $(`input[name="products[${ sizeId }][flag]"]`).val(1);
+                const price = $(`#price-${sizeId}`).val();
+                $('input[name="sizes[0][size_id]"]').val(sizeId);
+                $('input[name="sizes[0][price]"]').val(price);
+                const $form = $('#change-price-form');
+                $form.submit();
             });
         });
     </script>
@@ -21,27 +22,29 @@
         <p>メニュー： {{ $menu->name }}</p>
     </div>
 
-    <table border="1">
-        <tr>
-            <th>サイズ</th><th>価格（税込）</th>
-        </tr>
-        @foreach ($rows as $row)
-            <form action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
+    <form id="change-price-form" name="products" action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
+        @csrf
+        <input type="hidden" name="sizes[0][size_id]">
+        <input type="hidden" name="sizes[0][price]">
+    </form>
+
+    <form action="{{ route('admin.menu_store_product', ['id'=>$menu->id]) }}" method="post">
+        {{ csrf_field() }}
+
+        <table border="1">
+            <tr>
+                <th>サイズ</th><th>価格（税込）</th>
+            </tr>
+            @foreach ($rows as $index => $row)
                 {{ csrf_field() }}
                 <tr>
                     <td>{{ $row->size }}</td>
-                    <td><input type="text" value="{{ $row->price }}" name="products[{{ $row->size_id }}][price]"></td>
-                    <td><button class="change-price" data-menu_id="{{ $menu->id }}" data-size_id="{{ $row->size_id }}" data-product_id="{{ $row->product_id }}">変更する</button></td>
-                    <input type="hidden" value="{{ $row->size_id }}" name="products[{{ $row->size_id }}][size_id]">
-                    <input type="hidden" value="{{ $row->product_id }}" name="products[{{ $row->size_id }}][product_id]">
-                    <input type="hidden" value=0 name="products[{{ $row->size_id }}][flag]">
+                    <td><input type="number" id="price-{{ $row->size_id }}" value="{{ $row->price }}" name="sizes[{{ $index }}][price]"></td>
+                    <td><button type="button" class="change-price" data-menu_id="{{ $menu->id }}" data-size_id="{{ $row->size_id }}" data-product_id="{{ $row->product_id }}">変更する</button></td>
+                    <input type="hidden" name="sizes[{{ $index }}][size_id]" value="{{ $row->size_id }}">
                 </tr>
-            </form>
-        @endforeach
-    </table>
-
-    <form action="{{ route('admin.menu_store_product_all', ['id'=>$menu->id]) }}" method="post">
-        {{ csrf_field() }}
+            @endforeach
+        </table>
         <input type="submit" value="すべて変更する">
     </form>
 @endsection

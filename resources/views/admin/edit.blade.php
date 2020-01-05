@@ -27,7 +27,7 @@
         <input type="submit" value="メニュー一覧">
     </form>
 
-    <form action="{{ route('admin.menu_product', ['id' => $menu->id]) }}">
+    <form action="{{ route('admin.menu_product',  ['id' => $menu->id]) }}">
         <input type="submit" value="サイズと価格の設定">
     </form>
 
@@ -39,9 +39,6 @@
         </div>
         <div>
             {!! form_widget($form->name) !!}
-        </div>
-        <div>
-            {!! form_widget($form->price) !!}
         </div>
         <div class="form-group">
             <div class="image-collection-container" data-prototype="{{ form_row($form->images->prototype()) }}">

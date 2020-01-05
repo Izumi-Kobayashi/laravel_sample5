@@ -257,3 +257,42 @@ input[type="submit"] {
   margin-left: 10px;
   font-size: 15px;
 }
+
+.good-box {
+    position: relative;
+}
+.good {
+    background-image: url(//im.uniqlo.com/images/jp/pc/img/feature/wishlist/wishlist_heart_small_off.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    position: absolute;
+    top: 92%;
+    left: 4.5%;
+}
+nav{
+    text-align: center;
+}
+nav li {
+    width: 140px;
+    text-align: center;
+    background-color: #fff;
+    float: left;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #4ac0b9;
+    font-weight: bold;
+}nav ul{
+    overflow: hidden;
+    margin: 0 ;
+    padding: 0 ;
+}
