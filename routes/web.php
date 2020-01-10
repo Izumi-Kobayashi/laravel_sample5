@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('admin/menus/{menu}/product/store', 'Admin\AdminController@storeProduct')->name('admin.menu_store_product');
     Route::post('admin/menus/{id}/product/all', 'Admin\AdminController@storeProductAll')->name('admin.menu_store_product_all');
     Route::put('admin/menus/{id}', 'Admin\AdminController@update')->name('admin.menu_update');
+    Route::get('admin/sales', 'Admin\AdminController@sale')->name('admin.total_sale');
     Route::get('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
 });
 

@@ -24,7 +24,6 @@
 
     <form id="change-price-form" name="products" action="{{ route('admin.menu_store_product', ['menu'=>$menu->id]) }}" method="post">
         @csrf
-        <input type="hidden" name="sizes[0][product_id]">
         <input type="hidden" name="sizes[0][size_id]">
         <input type="hidden" name="sizes[0][price]">
     </form>
@@ -43,7 +42,6 @@
                     <td><input type="number" id="price-{{ $row->size_id }}" value="{{ $row->price }}" name="sizes[{{ $index }}][price]"></td>
                     <td><button type="button" class="change-price" data-menu_id="{{ $menu->id }}" data-size_id="{{ $row->size_id }}" data-product_id="{{ $row->product_id }}">変更する</button></td>
                     <input type="hidden" name="sizes[{{ $index }}][size_id]" value="{{ $row->size_id }}">
-                    <input type="hidden" name="sizes[{{ $index }}][product_id]" value="{{ $row->product_id }}">
                 </tr>
             @endforeach
         </table>

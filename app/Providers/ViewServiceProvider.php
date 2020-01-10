@@ -26,5 +26,6 @@ class ViewServiceProvider extends ServiceProvider
     {
         //
         \View::composer('admin.product', ProductEditComposer::class);
+        \View::composer('admin.sale', OrderViewComposer::class);
     }
 }

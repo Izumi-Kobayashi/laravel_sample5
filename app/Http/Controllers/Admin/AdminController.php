@@ -84,4 +84,9 @@ class AdminController extends Controller
 
         return redirect(route('admin.menu_product', ['menu' => $menu->id]));
     }
+
+    public function sale()
+    {
+        return view('admin.sale');
+    }
 }
