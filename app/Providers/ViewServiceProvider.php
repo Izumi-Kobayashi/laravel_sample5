@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\ProductEditComposer;
+use App\Http\ViewComposers\OrderViewComposer;
 
 class ViewServiceProvider extends ServiceProvider
 {

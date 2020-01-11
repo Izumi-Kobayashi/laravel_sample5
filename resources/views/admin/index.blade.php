@@ -2,17 +2,16 @@
 @section('javascript')
     <script>
         $(function() {
-            $('total-sales').click(function () {
-                var select = [];
+            $('.total-sales').click(function () {
                 //すべてのチェック済みvalue値を取得する
                 $('input:checked').each(function () {
                     const menu_id = $(this).val();
-                    $('input[name="select[menu_id]"]').val(menu_id);
+                    $('input[name="menu_ids"]').val(menu_id);
                 })
                 const $form = $('#total-sales-form');
                 $form.submit();
             })
-        })  
+        })
     </script>
 @endsection
 @section('content')
@@ -41,7 +40,7 @@
         @endforeach
     </table>
     {{ $menus->links() }}
-    <form id="total-sales-form" method="POST" action="{{ route('admin.total_sale') }}">
+    <form id="total-sales-form" action="{{ route('admin.total_sale') }}">
         <button type="button" class="btn btn-outline-primary total-sales" >選択して売上集計</button>
     </form>
     <form action="{{ route('admin.logout') }}">
