@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $menus = Menu::orderby('id', 'asc')->paginate(3);
+        $menus = Menu::orderby('id', 'asc')->paginate(5);
 
         return view('admin.index', compact('menus'));
     }

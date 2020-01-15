@@ -18,27 +18,52 @@
                 const type = 'image';
                 $(this).closest(`.${type}-row`).remove();
             });
+
+            /*戻る*/
+            $('.return').click(function (){
+                const $form = $('#return');
+                $form.submit();
+            });
+
+            /*価格とサイズ設定*/
+            $('.product').click(function (){
+                const $form = $('#product');
+                $form.submit();
+            });
+
+            /*変更*/
+            $('.update').click(function (){
+                const $form = $('#update');
+                $form.submit();
+            });
         });
 
     </script>
 @endsection
+@section('css')
+    <style>
+        .main {
+            width: 50%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+@endsection
 @section('content')
-    <form action="{{ route('admin.menu_index') }}">
-        <input type="submit" value="メニュー一覧">
-    </form>
+    <div class="main">
 
-    <form action="{{ route('admin.menu_product',  ['menu' => $menu->id]) }}">
-        <input type="submit" value="サイズと価格の設定">
-    </form>
-
-    <form action="{{ route('admin.menu_update', ['id' => $menu->id]) }}" method="post" enctype="multipart/form-data">
+    <form id="update" action="{{ route('admin.menu_update', ['id' => $menu->id]) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="put">
-        <div class="form-row">
+        <div class="form-group row">
+            <div class="col">
             {!! form_widget($form->type) !!}
+            </div>
         </div>
-        <div>
-            {!! form_widget($form->name) !!}
+        <div class="form-group row">
+            <div class="col">
+                {!! form_widget($form->name) !!}
+            </div>
         </div>
         <div class="form-group">
             <div class="image-collection-container" data-prototype="{{ form_row($form->images->prototype()) }}">
@@ -46,17 +71,28 @@
             </div>
             <button type="button" class="btn-sm btn-outline-dark add-to-image-collection">+</button>
         </div>
-        <div>
+        <div class="form-group">
             {!! form_widget($form->sizes) !!}
         </div>
-        <div>
+        <div class="form-group">
             {!! form_widget($form->drink_type) !!}
         </div>
-        <div>
+        <div  class="form-group">
             {!! form_widget($form->spiciness) !!}
         </div>
-        <input type="submit" value="変更">
     </form>
+        <div class="d-flex justify-content-end mt-2">
+            <form id="return" action="{{ route('admin.menu_index') }}">
+                <button type="button" class="btn btn-outline-secondary return mr-2">戻る</button>
+            </form>
+            <button type="button" class="btn btn-outline-primary update mr-2" >変更する</button>
+            <form id="product" action="{{ route('admin.menu_product',  ['menu' => $menu->id]) }}">
+                <button type="button" class="btn btn-outline-primary product" >サイズと価格の設定</button>
+            </form>
+        </div>
+
+    </div>
+
 
 @endsection
 

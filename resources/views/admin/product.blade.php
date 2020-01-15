@@ -10,12 +10,24 @@
                 const $form = $('#change-price-form');
                 $form.submit();
             });
+
+            /*戻る*/
+            $('.return').click(function (){
+                const $form = $('#return');
+                $form.submit();
+            });
+
+            /*すべてを変更する*/
+            $('.all-change').click(function (){
+                const $form = $('#all-change');
+                $form.submit();
+            });
         });
     </script>
 @endsection
 @section('content')
-    <form action="{{ route('admin.menu_edit', ['id' => $menu->id]) }}">
-        <input type="submit" value="戻る">
+    <form id="return" action="{{ route('admin.menu_edit', ['id' => $menu->id]) }}">
+        <button type="button" class="btn btn-outline-primary return">戻る</button>
     </form>
 
     <div class="menu">
@@ -28,7 +40,7 @@
         <input type="hidden" name="sizes[0][price]">
     </form>
 
-    <form action="{{ route('admin.menu_store_product', ['menu' => $menu->id]) }}" method="post">
+    <form id="all-change" action="{{ route('admin.menu_store_product', ['menu' => $menu->id]) }}" method="post">
         {{ csrf_field() }}
 
         <table border="1">
@@ -45,6 +57,6 @@
                 </tr>
             @endforeach
         </table>
-        <input type="submit" value="すべて変更する">
+        <button type="button" class="btn btn-outline-primary all-change">すべてを変更する</button>
     </form>
 @endsection

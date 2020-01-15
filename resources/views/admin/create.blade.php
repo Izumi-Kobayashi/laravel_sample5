@@ -27,13 +27,25 @@
                 const type= 'image';
                 $(this).closest(`.${type}-row`).remove();
             });
+
+            /*戻る*/
+            $('.return').click(function (){
+                const $form = $('#return');
+                $form.submit();
+            });
+            /*新規作成*/
+            $('.create').click(function (){
+                const $form = $('#create');
+                $form.submit();
+            });
+
         });
     </script>
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.menu_index') }}">
-        <input type="submit" value="メニュー一覧">
+    <form id="return" action="{{ route('admin.menu_index') }}">
+        <button type="button" class="btn btn-outline-primary return">戻る</button>
     </form>
 
     <form action="{{ route('admin.menu_store') }}" method="post" enctype="multipart/form-data">
@@ -66,7 +78,7 @@
                 {!! form_row($form->spiciness) !!}
             </div>
         </div>
-        <input type="submit" value="作成">
+        <button type="button" class="btn btn-outline-primary create" >作成する</button>
     </form>
 
 @endsection

@@ -14,7 +14,7 @@ class ImageForm extends Form
     {
         $this
             ->add('image', 'file', [
-                'wrapper' => ['class' => 'form-group col-4'],
+                'wrapper' => ['class' => 'form-group col'],
                 'label' => false,
                 'rules' => empty($this->model) ? 'required' : null,
             ])

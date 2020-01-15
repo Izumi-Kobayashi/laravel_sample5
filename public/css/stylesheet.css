@@ -258,6 +258,12 @@ input[type="submit"] {
   font-size: 15px;
 }
 
+/*ボタンの横並び*/
+.inline-block-button{
+    display: inline-block;
+    padding:  20px;
+}
+
 .good-box {
     position: relative;
 }
