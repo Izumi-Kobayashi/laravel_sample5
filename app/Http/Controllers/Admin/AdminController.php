@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $menus = Menu::orderby('id', 'asc')->paginate(5);
+        $menus = Menu::orderby('id', 'asc')->paginate(4);
 
         return view('admin.index', compact('menus'));
     }
@@ -38,11 +38,9 @@ class AdminController extends Controller
     public function store(){
 
         $form = $this->form(MenuForm::class);
-
         if (!$form->isValid($form)){
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-
         $form->save();
 
         return redirect(route('admin.menu_index'));

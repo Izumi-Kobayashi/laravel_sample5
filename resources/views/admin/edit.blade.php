@@ -57,28 +57,28 @@
         <input type="hidden" name="_method" value="put">
         <div class="form-group row">
             <div class="col">
-            {!! form_widget($form->type) !!}
+            メニュータイプ：{!! form_widget($form->type) !!}
             </div>
         </div>
         <div class="form-group row">
             <div class="col">
-                {!! form_widget($form->name) !!}
+                メニュー名：{!! form_widget($form->name) !!}
             </div>
         </div>
         <div class="form-group">
             <div class="image-collection-container" data-prototype="{{ form_row($form->images->prototype()) }}">
-                 {!! form_widget($form->images) !!}
+                 イメージファイル：{!! form_widget($form->images) !!}
             </div>
             <button type="button" class="btn-sm btn-outline-dark add-to-image-collection">+</button>
         </div>
         <div class="form-group">
-            {!! form_widget($form->sizes) !!}
+            サイズ：{!! form_widget($form->sizes) !!}
         </div>
         <div class="form-group">
-            {!! form_widget($form->drink_type) !!}
+            ドリンクタイプ：{!! form_widget($form->drink_type) !!}
         </div>
         <div  class="form-group">
-            {!! form_widget($form->spiciness) !!}
+            スパイス指数：{!! form_widget($form->spiciness) !!}
         </div>
     </form>
         <div class="d-flex justify-content-end mt-2">
@@ -90,7 +90,6 @@
                 <button type="button" class="btn btn-outline-primary product" >サイズと価格の設定</button>
             </form>
         </div>
-
     </div>
 
 

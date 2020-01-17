@@ -39,13 +39,16 @@ class MenuController extends Controller
         $orders = [];
 
         foreach ($request['orders'] as ['product_id' => $product_id, 'order_num' => $order_num]) {
-            $product = Product::find($product_id);
+            if($order_num > 0){
 
-            $totalPrice = $product->price * $order_num;
+                $product = Product::find($product_id);
 
-            $totalPayment += $totalPrice;
+                $totalPrice = $product->price * $order_num;
 
-            $orders[] = [$product, $order_num, $totalPrice];
+                $totalPayment += $totalPrice;
+
+                $orders[] = [$product, $order_num, $totalPrice];
+            }
         }
 
         return view('menu.confirm', compact('totalPayment', 'orders'));

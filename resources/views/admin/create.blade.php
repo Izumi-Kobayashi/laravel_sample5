@@ -44,11 +44,7 @@
 @endsection
 
 @section('content')
-    <form id="return" action="{{ route('admin.menu_index') }}">
-        <button type="button" class="btn btn-outline-primary return">戻る</button>
-    </form>
-
-    <form action="{{ route('admin.menu_store') }}" method="post" enctype="multipart/form-data">
+    <form id="create" action="{{ route('admin.menu_store') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
             <div class="col">
@@ -78,8 +74,13 @@
                 {!! form_row($form->spiciness) !!}
             </div>
         </div>
-        <button type="button" class="btn btn-outline-primary create" >作成する</button>
+        <button type="button" class="btn btn-outline-primary create">作成する</button>
     </form>
+    <div class="d-flex justify-content-end mt-2">
+        <form id="return" action="{{ route('admin.menu_index') }}">
+            <button type="button" class="btn btn-outline-secondary return mr-2">戻る</button>
+        </form>
+    </div>
 
 @endsection
 

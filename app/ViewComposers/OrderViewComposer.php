@@ -33,6 +33,6 @@ class OrderViewComposer
                 ->groupBy('m.name', 's.name')
                 ->get();
 
-        return $view->with(compact('rows'));
+        return $view->with(compact('rows', 'menus', 'dates'));
     }
 }
