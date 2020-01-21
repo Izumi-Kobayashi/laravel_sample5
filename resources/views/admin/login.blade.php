@@ -19,7 +19,7 @@
       {{ csrf_field() }}
 
       <div class="form-group input-group">
-        <input type="email" name="email" placeholder="メールアドレスXXX" class="form-control rounded-pill">
+        <input type="email" name="email" placeholder="メールアドレス" class="form-control rounded-pill">
       </div>
 
       <div class="form-group input-group">

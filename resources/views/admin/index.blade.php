@@ -51,7 +51,7 @@
 
     <table class="table table-bordered">
         <tr bgcolor="#f0e68c">
-            <th>選択</th><th>メニューNo</th><th>メニュータイプ</th><th>メニュー名</th><th>イメージ</th><th>ドリンクタイプ</th><th>スパイス指数</th>
+            <th>チェック</th><th>メニューNo</th><th>メニュータイプ</th><th>メニュー名</th><th>イメージ</th><th>ドリンクタイプ</th><th>スパイス指数</th>
         </tr>
         @foreach($menus as $menu)
             <tr>
