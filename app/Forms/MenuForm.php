@@ -48,7 +48,7 @@ class MenuForm extends Form
             ->add('price', 'number', [
                 'label' => '価格（税込）',
                 'label_attr' => ['class' => 'form-inline font-weight-bold'],
-                'rules' => 'required',
+/*                'rules' => 'required', */
             ])
             ->add('images','collection', [
                 'type' => 'form',
@@ -137,6 +137,7 @@ class MenuForm extends Form
                         'image' => basename($imagePath),]
                 );
             }
+/*
             $sizeIds = $values['sizes'];
 
             foreach ($sizeIds as $sizeId) {
@@ -145,6 +146,8 @@ class MenuForm extends Form
                     'size_id' => $sizeId,
                 ]);
             }
+*/
+            return $menu;
         } else{
             // 更新済み画像ID一覧
             $updatedImageIds = [];
@@ -185,6 +188,7 @@ class MenuForm extends Form
             // deleted_atカラムに現在時間を代入
             Image::destroy($deleteImageIds);
 
+/*
             // 更新前のサイズID一覧
             $oldSizeIds = $this->model->products->pluck('size_id');
 
@@ -204,6 +208,7 @@ class MenuForm extends Form
 
             // 削除対象サイズIDを含むプロダクトのdeleted_atカラムに現在時間を代入
             Product::whereIn('size_id', $deleteSizeIds)->delete();
+*/
         }
     }
 }

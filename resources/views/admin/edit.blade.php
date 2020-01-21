@@ -2,6 +2,18 @@
 @section('javascript')
     <script>
         $(function () {
+            $('input[name=type]').change(function () {
+                // DrinkかFoodになるはず
+                console.log($(this).val());
+                if ($(this).val() === 'Drink') {
+                    $('input[name=drink_type]').attr('disabled', false);
+                    $('input[name=spiciness]').attr('disabled', true);
+                }
+                if ($(this).val() === 'Food') {
+                    $('input[name=drink_type]').attr('disabled', true);
+                    $('input[name=spiciness]').attr('disabled', false);
+                }
+            });
             $(`.image-row`).each(function (i) {
                 $(this).append(`<div class="form-group col-2 d-flex align-items-center"><div><button type="button" class="btn-sm btn-outline-danger delete-image-row">×</button></div></div>`)
             });
@@ -70,9 +82,6 @@
                  イメージファイル：{!! form_widget($form->images) !!}
             </div>
             <button type="button" class="btn-sm btn-outline-dark add-to-image-collection">+</button>
-        </div>
-        <div class="form-group">
-            サイズ：{!! form_widget($form->sizes) !!}
         </div>
         <div class="form-group">
             ドリンクタイプ：{!! form_widget($form->drink_type) !!}

@@ -41,9 +41,9 @@ class AdminController extends Controller
         if (!$form->isValid($form)){
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
-        $form->save();
+        $menu = $form->save();
 
-        return redirect(route('admin.menu_index'));
+        return redirect(route('admin.menu_product', ['menu' => $menu->id]));
     }
     public function edit($id)
     {
