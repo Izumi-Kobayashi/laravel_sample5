@@ -7,7 +7,7 @@
 
     <p>利用者：{{ Auth::user()->name }}</p>
 
-        <table class="table table-bordered">
+        <table border="1">
             <tr bgcolor="#00ffff">
                 <th>注文日</th><th>メニュー</th><th>サイズ</th><th>数量</th><th>金額</th>
             </tr>
