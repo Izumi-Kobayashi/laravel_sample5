@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Café Progate</title>
+    <title>Café Sugekitaura</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Pacifico|Lato' rel='stylesheet' type='text/css'>
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
