@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Admin;
+use Carbon\CarbonImmutable;
 
 class LoginController extends Controller
 {
@@ -55,7 +56,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // メニュー一覧画面に遷移する
-            return redirect(route('admin.menu_index'));
+//            return redirect(route('admin.menu_index'));
+            $month = CarbonImmutable::today()->format('Y-m');
+            return redirect(route('admin.calendar',  ['month' => $month]));
         } else {
             // ユーザーが存在しなかった場合、例外を発生させログイン画面にエラー文を表示させる
             throw ValidationException::withMessages([

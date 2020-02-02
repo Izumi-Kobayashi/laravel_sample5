@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin','middleware' => 'guest:admin'], function() {
     Route::post('login',    'Admin\Auth\LoginController@login')->name('admin.login');
 });
 Route::group(['middleware' => 'auth:admin'], function () {
+    Route::get('admin/calendar/{month}', 'Admin\AdminController@showCalendar')->name('admin.calendar');
     Route::get('admin/menus', 'Admin\AdminController@index')->name('admin.menu_index');
     Route::get('admin/menus/create', 'Admin\AdminController@create')->name('admin.menu_create');
     Route::post('admin/menus', 'Admin\AdminController@store')->name('admin.menu_store');

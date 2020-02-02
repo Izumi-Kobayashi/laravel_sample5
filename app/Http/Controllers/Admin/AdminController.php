@@ -8,6 +8,7 @@ use App\Menu;
 use App\Services\ProductUpdateService;
 use App\Size;
 use App\Product;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
@@ -86,5 +87,14 @@ class AdminController extends Controller
     public function sale()
     {
         return view('admin.sale');
+    }
+
+    public function showCalendar($month)
+    {
+        $calendar = calendar($month);
+
+        $month = new CarbonImmutable($month);
+
+        return view('admin.show_calendar', compact('calendar', 'month'));
     }
 }

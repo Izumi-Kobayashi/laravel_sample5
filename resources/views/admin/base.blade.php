@@ -5,7 +5,10 @@
   <title>@yield('title')</title>
   <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-  <style>
+  <link rel="stylesheet" href="{{ asset('css/simple-sidebar.css') }}">
+
+
+    <style>
     body {
       font-size: 0.9rem;
 /*      background-color: #f9fbfe; */
@@ -22,6 +25,10 @@
         box-shadow: 0 1px 3px rgba(160,166,179,0.3);
     }
 
+    .main {
+        margin: 20px 0 20px 0;
+    }
+
     .error {
       color: red
     }
@@ -34,26 +41,19 @@
   @yield('css')
 </head>
 <body>
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light mr-0 ml-0 mb-3">
-        <a class="navbar-brand" href="">Cafe-sugekitaura</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="">アカウント作成</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">ログイン</a>
-                </li>
-            </ul>
-        </div>
-        </nav>
-        <div class="container">
-            @yield('content')
-        </div>
+<!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"><a class="unishop-logo" href="{{ route('admin.menu_index') }}">Cafe-Sugekitaura</a></div>
+    <div class="list-group list-group-flush">
+        <a href="{{ route('admin.menu_index') }}" class="list-group-item list-group-item-action bg-light">メニュー一覧</a>
     </div>
+</div>
+<!-- /#sidebar-wrapper -->
+
+<div class="container-fluid">
+    <div class="main">
+        @yield('content')
+    </div>
+</div>
 </body>
 </html>

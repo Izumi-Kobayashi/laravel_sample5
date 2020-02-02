@@ -1,4 +1,4 @@
-@extends('admin.base')
+@extends('layouts.base')
 
 @section('css')
   <style>

@@ -12,11 +12,6 @@
       background-color: #f9fbfe;
     }
 
-    .navbar {
-      background-color: #fff;
-      box-shadow: 0 1px 3px rgba(160,166,179,0.3);
-    }
-
     .error {
       color: red
     }
