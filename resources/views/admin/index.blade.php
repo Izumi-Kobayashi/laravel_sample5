@@ -73,14 +73,8 @@
         {{ $menus->links() }}
     </ul>
     <div class="d-flex justify-content-end mt-2">
-        <form id="create" action="{{ route('admin.menu_create') }}">
-            <button type="button" class="btn btn-outline-primary create" >メニューの新規作成</button>
-        </form>
         <form id="total-sales-form" action="{{ route('admin.total_sale') }}">
             <button type="button" class="btn btn-outline-primary total-sales" >選択して売上集計を表示する</button>
-        </form>
-        <form id="logout" action="{{ route('admin.logout') }}">
-            <button type="button" class="btn btn-outline-primary logout" >ログアウト</button>
         </form>
     </div>
 

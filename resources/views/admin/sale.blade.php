@@ -5,6 +5,18 @@
             alert("対象期間の売り上げデータはありません。");
         }
         $(function() {
+/*
+            $.fn.datebox.defaults.formatter = function(date){
+                var y = date.getFullYear();
+                var m = date.getMonth()+1;
+                var d = date.getDate();
+                return y+'/'+m+'/'+d;
+            }
+*/
+/*
+            $('#sumFrom').datebox('setValue', '{{ $dates[0] }}');
+            $('#sumTo').datebox('setValue', '{{ $dates[1] }}');
+*/
             /*戻る*/
             $('.return').click(function (){
                 const $form = $('#return');
@@ -24,36 +36,20 @@
                 }
 
                 const $form = $('#view');
-                const fromDate = $(`#sumFrom`).val();
-                const toDate = $(`#sumTo`).val();
-                console.log('AAA');
-                // formにhidden inputを作成する
-                $('<input>').attr({
-                    type: 'hidden',
-                    name: `sumDates[0]`,
-                    value: fromDate,
-                }).appendTo($form);
-
-                $('<input>').attr({
-                    type: 'hidden',
-                    name: `sumDates[1]`,
-                    value: toDate,
-                }).appendTo($form);
-
                 $form.submit();
             });
         });
         </script>
 @endsection
 @section('content')
-
+{{$dates[0]}}
     <form id="view" name="summary" action="{{ route('admin.total_sale') }}">
         <label for="sumFrom">集計期間</label>
         @foreach ($menus as $i => $menuId)
             <input type="hidden" name="menuIds[{{ $i }}]" value="{{ $menuId }}">
         @endforeach
-        <input name="sumFrom" id="sumFrom" type="date" class="easyui-datebox" value="{{ $dates[0] }}" required>～</input>
-        <input name="sumTo" id="sumTo" type="date" class="easyui-datebox" value="{{ $dates[1] }}" required></input>
+        <input name="sumFrom" id="sumFrom" type="date" class="easyui-datebox" required>～</input>
+        <input name="sumTo" id="sumTo" type="date" class="easyui-datebox" required></input>
         <button type="button" class="btn btn-outline-primary view">期間を指定して再表示</button>
     </form>
 

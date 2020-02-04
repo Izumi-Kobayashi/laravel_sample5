@@ -50,7 +50,7 @@
       @foreach ($week as $date)
       <td style="width: 130px; height: 130px">
         <div class="text-right">
-            <a href= "{{ route('admin.total_sale') }}">{{ $date->day }}</a>
+            <a href= "{{ route('admin.total_sale') }}?sumFrom={{$date->format('Y-m-d')}}&sumTo={{$date->format('Y-m-d')}}">{{ $date->day }}</a>
         </div>
       </td>
       @endforeach
