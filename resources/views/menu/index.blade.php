@@ -80,6 +80,16 @@
                 addRemoveFavorite($(this));
                 return false;
             });
+
+            $('.confirm-btn').click(function () {
+                const amounts = $('.amount').map(function () {
+                    return $(this).val();
+                }).get();
+                if (amounts.every((amount) => amount == 0)) {
+                    alert('個数を入力してください');
+                    return false;
+                }
+            })
         });
         function showIziToast(message, messageColor, backgroundColor, iziToast1 = iziToast) {
             toastOptions = {
@@ -162,7 +172,6 @@
 
             showIziToast(message, messageColor, backgroundColor);
         }
-
     </script>
 @endsection
 @section('content')
@@ -222,7 +231,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-primary rounded-pill">注文する</button>
+            <button class="btn btn-primary rounded-pill confirm-btn">注文する</button>
         </div>
     </form>
 </div>
