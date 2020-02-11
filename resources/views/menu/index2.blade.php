@@ -1,7 +1,21 @@
-@extends('menu.base')
-
-@section('css')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Café Progate</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/stylesheet.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico|Lato' rel='stylesheet' type='text/css'>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/iziToast.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/iziToast.min.css') }}">
     <style>
+        ul, ol {
+            list-style-type: none;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
         .menu-items {
             width: 80%;
             margin-right: auto;
@@ -34,8 +48,6 @@
             width: 15%;
         }
     </style>
-@endsection
-@section('javascript')
     <script>
         $(function () {
             @if (Auth::check())
@@ -164,8 +176,7 @@
         }
 
     </script>
-@endsection
-@section('content')
+</head>
 <div class="top-image-area">
     <nav>
         <ul>
@@ -177,9 +188,9 @@
 </div>
 
 <div class="menu-wrapper container">
-    <h1 class="logo">Café Sugekitaura</h1>
+    <h1 class="logo">Café Progate</h1>
     <div d-flex justify-content-center mb-5>
-        <h3>メニュー {{ $menus->count() }}品</h3>
+        <h3>メニュー{{ $menus->count() }}品</h3>
     </div>
     <form method="post" action="{{ route('menu_confirm') }}">
         {{ csrf_field() }}
@@ -231,8 +242,9 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-primary rounded-pill">注文する</button>
+            <input class="btn btn-primary rounded-pill" type="submit" value="注文する">
         </div>
     </form>
 </div>
-@endsection
+</body>
+</html>
