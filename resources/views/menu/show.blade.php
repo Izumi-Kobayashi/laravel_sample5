@@ -46,7 +46,7 @@
     <div class="main">
         <div class="d-flex justify-content-center mb-5">
             <div class="menu bg-white">
-                <img src="{{ asset('storage/'.$menu->images[0]->image) }}" class="menu-item-image">
+                <img src="{{ asset('storage/'.$menu->images[0]->image) }}" class="menu-item-image" width="400px">
 
                 <h4 class="mt-4">{{ $menu->name }}</h4>
 
