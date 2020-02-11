@@ -14,20 +14,20 @@ class SizeTableSeeder extends Seeder
         //
         $param = [
             'created_at' => date("Y-m-d H:i:s"),
-            'size' => 'S',
+            'name' => 'S',
         ];
 
         DB::table('sizes')->insert($param);
 
         $param = [
             'created_at' => date("Y-m-d H:i:s"),
-            'size' => 'M',
+            'name' => 'M',
         ];
 
         DB::table('sizes')->insert($param);
         $param = [
             'created_at' => date("Y-m-d H:i:s"),
-            'size' => 'L',
+            'name' => 'L',
         ];
 
         DB::table('sizes')->insert($param);
