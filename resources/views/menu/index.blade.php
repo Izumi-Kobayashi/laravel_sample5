@@ -168,9 +168,10 @@
 @section('content')
 <div class="menu-wrapper container">
     <h1 class="logo">Café Sugekitaura</h1>
-    <div d-flex justify-content-center mb-5>
+    <div class="d-flex justify-content-center mb-5">
         <h3>メニュー {{ $menus->count() }}品</h3>
     </div>
+
     <form method="post" action="{{ route('menu_confirm') }}">
         {{ csrf_field() }}
         <div class="menu-items">

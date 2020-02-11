@@ -29,7 +29,9 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
 
-        return view('menu.show', compact('menu'));
+        $reviews = $menu->reviews()->paginate(3);
+
+        return view('menu.show', compact('menu', 'reviews'));
     }
 
     public function confirm(Request $request)
