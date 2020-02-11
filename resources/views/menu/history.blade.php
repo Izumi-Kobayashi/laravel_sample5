@@ -1,10 +1,6 @@
 @extends('menu.base')
 
 @section('content')
-    <form action="{{ route('menu_index') }}">
-        <input type="submit" value="メニューへ戻る">
-    </form>
-
     <p>利用者：{{ Auth::user()->name }}</p>
 
         <table class="table table-bordered">
@@ -21,6 +17,12 @@
                 </tr>
             @endforeach
         </table>
+
+    <form action="{{ route('menu_index') }}">
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary rounded-pill">メニューへ戻る</button>
+        </div>
+    </form>
 
 
 @endsection

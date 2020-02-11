@@ -166,16 +166,6 @@
     </script>
 @endsection
 @section('content')
-<div class="top-image-area">
-    <nav>
-        <ul>
-            <li><a href="{{ route('menu_history') }}" class="btn1">注文履歴</a></li>
-            <li><a href="{{ route('favorite_show') }}" class="btn2">お気に入り</a></li>
-            <li><a href="{{ route('logout') }}" class="btn3">ログアウト</a></li>
-        </ul>
-    </nav>
-</div>
-
 <div class="menu-wrapper container">
     <h1 class="logo">Café Sugekitaura</h1>
     <div d-flex justify-content-center mb-5>

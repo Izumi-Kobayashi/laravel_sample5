@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Pacifico|Lato' rel='stylesheet' type='text/css'>
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/iziToast.min.js') }}"></script>
     <style>
         body {
@@ -28,7 +29,31 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light mr-0 ml-0 mb-3">
-    <a class="navbar-brand" href="">Cafe</a>
+    <a class="navbar-brand" href="">Cafe Sugekiraura</a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            @if (Auth::check())
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('menu_history')}}">注文履歴</a>
+                        <a class="dropdown-item" href="{{route('favorite_show')}}">お気に入り</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}">ログアウト</a>
+                    </div>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('patient_show_registration_form') }}">アカウント作成</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('patient_login') }}">ログイン</a>
+                </li>
+            @endif
+        </ul>
+    </div>
 </nav>
 
 <div class="container">
