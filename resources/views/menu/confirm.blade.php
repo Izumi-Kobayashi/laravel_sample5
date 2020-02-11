@@ -7,6 +7,10 @@
                 const $form = $('#order');
                 $form.submit();
             });
+            $('.return').click(function (){
+                const $form = $('#return');
+                $form.submit();
+            });
         });
      </script>
 @endsection
@@ -33,7 +37,7 @@
             <h3>注文内容確認</h3>
         </div>
 
-        <form method="post" action="{{ route('menu_order') }}">
+        <form id= "order" method="post" action="{{ route('menu_order') }}">
             @csrf
             <div class="order mr-auto ml-auto">
                 <table class="table table-borderless">
@@ -48,15 +52,13 @@
                 @endforeach
                 </table>
             </div>
-            <h3>合計金額: {{ $totalPayment }}円</h3>
-            <div id="order" class="d-flex justify-content-center">
-                <button class="btn btn-primary rounded-pill">注文する</button>
+            <div class="d-flex justify-content-center">
+                <h3>合計金額: {{ $totalPayment }}円</h3>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary rounded-pill mr-1 back" data-action="{{ route('menu_index') }}">戻る</button>
+                <button class="btn btn-primary rounded-pill ml-1">注文する</button>
             </div>
         </form>
     </div>
-    <form action="{{ route('menu_index') }}">
-        <div class="d-flex justify-content-center">
-            <button class="btn btn-primary rounded-pill">一覧に戻る</button>
-        </div>
-    </form>
 @endsection

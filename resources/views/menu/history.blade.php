@@ -20,7 +20,7 @@
 
     <form action="{{ route('menu_index') }}">
         <div class="d-flex justify-content-center">
-            <button class="btn btn-primary rounded-pill">メニューへ戻る</button>
+            <button class="btn btn-secondary rounded-pill">戻る</button>
         </div>
     </form>
 
