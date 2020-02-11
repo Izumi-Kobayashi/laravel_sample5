@@ -91,19 +91,19 @@
                 <nav aria-label="...">
                     <ul class="pagination">
                         <li class="page-item @if ($reviews->currentPage() === 1) disabled @endif">
-                            <a class="page-link" href="{{ route('menu_index', ['page' => $reviews->currentPage() - 1]) }}" tabindex="-1">Previous</a>
+                            <a class="page-link" href="{{ route('menu_show', ['id' => $menu->id, 'page' => $reviews->currentPage() - 1]) }}" tabindex="-1">Previous</a>
                         </li>
                         @for ($page = 1; $page <= $reviews->lastPage(); $page += 1)
                             @if ($page === $reviews->currentPage())
                                 <li class="page-item active">
-                                    <a class="page-link" href="{{ route('menu_index', ['page' => $page]) }}">{{ $page }} <span class="sr-only">(current)</span></a>
+                                    <a class="page-link" href="{{ route('menu_show', ['id' => $menu->id, 'page' => $page]) }}">{{ $page }} <span class="sr-only">(current)</span></a>
                                 </li>
                             @else
-                                <li class="page-item"><a class="page-link" href="{{ route('menu_index', ['page' => $page]) }}">{{ $page }}</a></li>
+                                <li class="page-item"><a class="page-link" href="{{ route('menu_show', ['id' => $menu->id, 'page' => $page]) }}">{{ $page }}</a></li>
                             @endif
                         @endfor
                         <li class="page-item @if ($reviews->currentPage() === $reviews->lastPage()) disabled @endif">
-                            <a class="page-link" href="{{ route('menu_index', ['page' => $reviews->currentPage() + 1]) }}">Next</a>
+                            <a class="page-link" href="{{ route('menu_show', ['id' => $menu->id, 'page' => $reviews->currentPage() + 1]) }}">Next</a>
                         </li>
                     </ul>
                 </nav>
