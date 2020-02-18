@@ -55,7 +55,6 @@
 @section('css')
     <style>
         .main {
-            width: 50%;
             margin-right: auto;
             margin-left: auto;
         }

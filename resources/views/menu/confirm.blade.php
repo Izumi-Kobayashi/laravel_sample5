@@ -7,8 +7,11 @@
                 const $form = $('#order');
                 $form.submit();
             });
-            $('.return').click(function (){
-                const $form = $('#return');
+            $('.back').click(function (){
+                const $form = $(this).parents('form');
+                const $action = $(this).data('action');
+                $form.attr('action', $action);
+                $form.attr('method', 'GET');
                 $form.submit();
             });
         });
@@ -32,19 +35,19 @@
 @endsection
 
 @section('content')
-    <div class="main border mr-auto ml-auto rounded mb-5">
         <div class="d-flex justify-content-center">
             <h3>注文内容確認</h3>
         </div>
 
         <form id= "order" method="post" action="{{ route('menu_order') }}">
+            <div class="main border mr-auto ml-auto rounded mb-5">
             @csrf
             <div class="order mr-auto ml-auto">
                 <table class="table table-borderless">
                 @foreach ($orders as $orderIndex => [$product, $order_num, $totalPrice])
                     <tr>
                         <td><p class="order-amount">{{ $product->menu->name }} x {{ $order_num }} 個 </p></td>
-                        <td><p class="order-price">{{ $totalPrice }}円</p></td>
+                        <td><p class="order-price text-right">{{ $totalPrice }}円</p></td>
                         <input type="hidden" name="orders[{{ $orderIndex }}][product_id]" value="{{ $product->id }}">
                         <input type="hidden" name="orders[{{ $orderIndex }}][order_price]" value="{{ $totalPrice }}">
                         <input type="hidden" name="orders[{{ $orderIndex }}][order_num]" value="{{ $order_num }}">
@@ -52,13 +55,14 @@
                 @endforeach
                 </table>
             </div>
+            <hr>
             <div class="d-flex justify-content-center">
                 <h3>合計金額: {{ $totalPayment }}円</h3>
+            </div>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-secondary rounded-pill mr-1 back" data-action="{{ route('menu_index') }}">戻る</button>
                 <button class="btn btn-primary rounded-pill ml-1">注文する</button>
             </div>
         </form>
-    </div>
 @endsection
