@@ -46,10 +46,10 @@
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('patient_show_registration_form') }}">アカウント作成</a>
+                    <a class="nav-link" href="">アカウント作成</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('patient_login') }}">ログイン</a>
+                    <a class="nav-link" href="">ログイン</a>
                 </li>
             @endif
         </ul>

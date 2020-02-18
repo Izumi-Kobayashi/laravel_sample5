@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>@yield('title')</title>
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <style>
-    .main {
-      background-color: #fff;
-      box-shadow: 0 1px 3px rgba(160,166,179,0.3);
-      border: 1px solid #e1e7ec;
-      border-radius: 7px;
-      padding: 30px 24px;
-      width: 50%;
-    }
-  </style>
-</head>
-<body>
+@extends('menu.base')
 
+@section('css')
+    <style>
+        .main {
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(160,166,179,0.3);
+            border: 1px solid #e1e7ec;
+            border-radius: 7px;
+            padding: 30px 24px;
+            width: 50%;
+        }
+    </style>
+@endsection
+
+@section('content')
   <div class="main border mr-auto ml-auto rounded">
     <form action="{{ route('login') }}" method="post">
       {{ csrf_field() }}
@@ -49,5 +44,4 @@
       </div>
     </form>
   </div>
-</body>
-</html>
+@endsection
