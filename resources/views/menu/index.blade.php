@@ -176,7 +176,6 @@
 @endsection
 @section('content')
 <div class="menu-wrapper container">
-    <h1 class="logo">Café Sugekitaura</h1>
     <div class="d-flex justify-content-center mb-5">
         <h3>メニュー {{ $menus->count() }}品</h3>
     </div>
@@ -186,7 +185,7 @@
         <div class="menu-items">
             <div class="d-flex flex-wrap justify-content-between">
                 @foreach ($menus as $menuIndex => $menu)
-                <div class="menu-item">
+                <div class="menu-item mb-5">
                     <div class="good-box">
                         <img src="{{ asset('storage/'.$menu->images[0]->image) }}" class="menu-item-image">
                         <div class="good" data-menu_id="{{ $menu->id }}">
@@ -208,10 +207,13 @@
                     <p class="price">¥<span id="price_{{ $menuIndex }}">{{ $menu->price }}</span>（税込）</p>
 
                     {{-- サイズの切り替えで、product_id, order_priceの値を変更する必要があります --}}
+                    <div class="mb-2">
+
                     @foreach($menu->productsOrderBySize as $product)
                         <input id="size_{{ $product->id }}" type="radio" name="size_{{ $product->menu->id }}" class="size" value="{{ $product->id }}" data-menu_index="{{ $menuIndex }}" data-price="{{ $product->price }}">
                         <lable for="size_{{ $product->id }}">{{ $product->size->name }}</lable>
                     @endforeach
+                    </div>
 
                 <!--
                 product_id, order_num, order_priceを一つの配列にまとめて送ります。
@@ -223,7 +225,7 @@
                     ['product_id' => 7, 'order_num' => 1],
                 ]
                 -->
-                    <p><input type="text" class="amount" value="0" name="orders[{{ $menuIndex }}][order_num]"></p>
+                    <input type="text" class="amount" value="0" name="orders[{{ $menuIndex }}][order_num]">
                     <span>個</span>
                     <input type="hidden" value="{{ $menu->products[0]->id }}" name="orders[{{ $menuIndex }}][product_id]">
                 </div>
