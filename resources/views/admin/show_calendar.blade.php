@@ -28,7 +28,6 @@
 @section('content')
 <form class="prev-next-form"></form>
 
-<div class="main">
   <div class="d-flex justify-content-between mb-3">
     <button class="btn btn-outline-secondary prev-next-btn" data-month="{{ $month->add(-1, 'month')->format('Y-m') }}"><</button>
     <div class="font-weight-bold">{{ $month->year }}年{{ $month->month }}月</div>
@@ -57,5 +56,4 @@
     </tr>
     @endforeach
   </table>
-</div>
 @endsection
