@@ -204,13 +204,13 @@
                             @endfor
                         @endif
                     </div>
-                    <p class="price">¥<span id="price_{{ $menuIndex }}">{{ $menu->price }}</span>（税込）</p>
+                    <p class="price">¥<span id="price_{{ $menuIndex }}">{{ $menu->products->first()->price }}</span>（税込）</p>
 
                     {{-- サイズの切り替えで、product_id, order_priceの値を変更する必要があります --}}
                     <div class="mb-2">
 
-                    @foreach($menu->productsOrderBySize as $product)
-                        <input id="size_{{ $product->id }}" type="radio" name="size_{{ $product->menu->id }}" class="size" value="{{ $product->id }}" data-menu_index="{{ $menuIndex }}" data-price="{{ $product->price }}">
+                    @foreach($menu->productsOrderBySize as $i => $product)
+                        <input id="size_{{ $product->id }}" type="radio" name="size_{{ $product->menu->id }}" class="size" value="{{ $product->id }}" data-menu_index="{{ $menuIndex }}" data-price="{{ $product->price }}" @if ($i == 0) checked @endif>
                         <lable for="size_{{ $product->id }}">{{ $product->size->name }}</lable>
                     @endforeach
                     </div>
