@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
 Route::group(['middleware' => 'guest'] , function () {
         Route::get('login', 'LoginController@showLoginForm')->name('show_login_form');
         Route::post('login', 'LoginController@login')->name('login');
+        Route::get('user', 'UserController@showUserForm')->name('show_user_form');
+        Route::post('user', 'UserController@create')->name('user_create');
 });
 
 Route::group(['middleware' => 'auth:user'], function () {
